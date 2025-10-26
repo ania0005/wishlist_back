@@ -1,31 +1,33 @@
 spring:
   datasource:
-    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}
-    username: ${DB_USERNAME}
+    url: jdbc:mysql://localhost:3306/project_wishlist
+    username: ania           # ← если у тебя другой пользователь MySQL — замени
+    password: qwert007 # ← сюда впиши СВОЙ пароль от MySQL (тот, с которым входишь в Workbench)
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password: ${DB_PASSWORD}
+
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: giflistify@gmail.com
-    password: cctjikrhnlabrbky
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-          ssl:
-            protocols: TLSv1.2
-            trust: smtp.gmail.com
-        debug: true
 
+mail:
+  host: smtp.gmail.com
+  port: 587
+  username: noellesecret01@gmail.com     # если тестируешь отправку писем, можешь временно оставить
+  password: flxu qjzk aygm vupp         # ⚠️ временный пароль-приложения (лучше потом заменить на свой)
+  properties:
+    mail:
+      smtp:
+        auth: true
+        starttls:
+          enable: true
+        ssl:
+          protocols: TLSv1.2
+          trust: smtp.gmail.com
+  debug: true
 
 key:
-  access: Dm7QXW4YowIjJcIV/Qbs4u9R/RCCTPqeg7mkhaCJ6tA=
-  refresh: 3zT4pEV8P/GQ6hTpjaZTsY8KRft4l6l0qtaCgWk5djg=
+  access: Dm7QXW4Yow1IjcIV/Qbs4u9R/RCCTPqeg7mkhacJ6tA=
+  refresh: 3zT4pEVBP/GQ6hTpjaZTsY8kRht4L6L0qtaCgWK5djg=
 
 app:
-  base-url: https://project-wishlist-giftlistify-ccqrj.ondigitalocean.app
+  base-url: http://localhost:8080     # ← поменяли DigitalOcean на локальный сервер
+

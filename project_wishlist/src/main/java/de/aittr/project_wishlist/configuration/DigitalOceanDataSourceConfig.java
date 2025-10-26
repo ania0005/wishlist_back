@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Profile;
 import javax.sql.DataSource;
 
 @Profile("default")
-@Configuration
+//@Configuration
 public class DigitalOceanDataSourceConfig {
 
     @Value("${DB_USERNAME}")

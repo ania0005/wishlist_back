@@ -12,7 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/users")
+@RequestMapping("/api/users")
+@CrossOrigin(origins = "*")  // ✅ Разрешает запросы с любых источников (Postman, фронт и т.д.)
 public class AuthController {
 
     private final AuthService service;
@@ -23,9 +24,13 @@ public class AuthController {
         this.userRepo = userRepo;
     }
 
+    /**
+     * ✅ Вход пользователя
+     * Этот эндпоинт теперь разрешён без токена
+     */
     @PostMapping("/login")
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Object> login(@RequestBody User user, HttpServletResponse response) {
-
         TokenResponseDto tokenDto = service.login(user);
 
         Cookie accessTokenCookie = new Cookie("Access-Token", tokenDto.getAccessToken());
@@ -34,30 +39,38 @@ public class AuthController {
         response.addCookie(accessTokenCookie);
 
         return ResponseEntity.ok(tokenDto);
-
     }
 
+    /**
+     * ✅ Обновление access-токена
+     */
     @PostMapping("/access")
     public ResponseEntity<Object> getNewAccessToken(@RequestBody RefreshRequestDto request, HttpServletResponse response) {
         try {
             TokenResponseDto tokenDto = service.getAccessToken(request.getRefreshToken());
+
             Cookie cookie = new Cookie("Access-Token", tokenDto.getAccessToken());
             cookie.setPath("/");
             cookie.setHttpOnly(true);
             response.addCookie(cookie);
+
             return ResponseEntity.ok(tokenDto);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
+    /**
+     * ✅ Выход пользователя
+     */
     @PostMapping("/logout")
-    public ResponseEntity<String> Logout(HttpServletResponse response) {
+    public ResponseEntity<String> logout(HttpServletResponse response) {
         Cookie cookie = new Cookie("Access-Token", null);
         cookie.setPath("/");
         cookie.setHttpOnly(true);
         cookie.setMaxAge(0);
         response.addCookie(cookie);
+
         return ResponseEntity.ok("Logout successful");
     }
 }
