@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="add_tag_v.1.4.0" author="dimitri">
+        <tagDatabase tag="v.1.4.0"/>
+    </changeSet>
+
+    <include file="create_table_share_link.xml" relativeToChangelogFile="true"/>
+    <include file="add_foreign_key_wishlist_id.xml" relativeToChangelogFile="true"/>
+    <include file="create-table-confirm-code.xml" relativeToChangelogFile="true"/>
+    <include file="create-foreign-keys-confirm-code-to-user.xml" relativeToChangelogFile="true"/>
+    <include file="add-column-is_active-to-user.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

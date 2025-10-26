@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="create_table_gift" author="dimitri">
+        <createTable tableName="gift">
+
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="description" type="varchar(255)">
+
+            </column>
+
+            <column name="price" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="currency" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="url" type="text">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="img_url" type="text">
+
+            </column>
+
+            <column name="reservation" type="bool">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="wishlist_id" type="bigint">
+                <constraints foreignKeyName="wishlist_id" nullable="false"/>
+            </column>
+
+
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

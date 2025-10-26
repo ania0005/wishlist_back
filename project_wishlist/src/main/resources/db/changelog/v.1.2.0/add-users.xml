@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="add_users" author="dimitri">
+
+        <insert tableName="user">
+            <column name="first_name" value="Alex"/>
+            <column name="last_name" value="Stone"/>
+            <column name="email" value="alex.stone@mail.com"/>
+            <column name="password" value="$2a$10$kER0KFAZj9nRVjV/MJOSI.B5h/gVZzK.Zk5..oEAAwMe1j4uHblgC"/>
+        </insert>
+
+        <insert tableName="user">
+            <column name="first_name" value="Sam"/>
+            <column name="last_name" value="Hill"/>
+            <column name="email" value="sam.hill@mail.com"/>
+            <column name="password" value="$2a$10$C6/P5c.Ue7OkaV3B50rev.vfni.vTmEKf95eY4vsBOlsz0i4rVnXm"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>
