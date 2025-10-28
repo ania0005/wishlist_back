@@ -17,7 +17,6 @@ spring:
   liquibase:
     enabled: false
 
-
 mail:
   host: smtp.gmail.com
   port: 587
@@ -39,5 +38,4 @@ key:
   refresh: 3zT4pEVBP/GQ6hTpjaZTsY8kRht4L6L0qtaCgWK5djg=
 
 app:
-  base-url: http://localhost:8080     # ← поменяли DigitalOcean на локальный сервер
-
+  base-url: https://wishlist-back-3tjj.onrender.com
