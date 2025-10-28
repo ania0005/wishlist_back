@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://wishlist_db_c9ln_user:KywlQMRtlrwmv9xRRQE5crcWLd1zOrWi@dpg-d3v7gc0dl3ps73fk8n70-a.frankfurt-postgres.render.com:5432/wishlist_db_c9ln?sslmode=require
+    url: jdbc:postgresql://dpg-d3v7gc0dl3ps73fk8n70-a.frankfurt-postgres.render.com:5432/wishlist_db_c9ln?sslmode=require
     username: wishlist_db_c9ln_user
     password: KywlQMRtlrwmv9xRRQE5crcWLd1zOrWi
     driver-class-name: org.postgresql.Driver
