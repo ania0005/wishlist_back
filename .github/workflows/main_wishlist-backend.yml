@@ -36,33 +36,34 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build 
+    needs: build
     permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
+     id-token: write
+     contents: read
 
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: java-app
-      
+         name: java-app
+         path: ./java-app  # <--- важно, явно указываем путь
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_BDE6120F57574D93944E6E2D96A6870D }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_52C55C0E60AB481FB5EEC30A4A654905 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_05A4CDF6A9474CCD8621940441036D97 }}
-
+         client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_BDE6120F57574D93944E6E2D96A6870D }}
+         tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_52C55C0E60AB481FB5EEC30A4A654905 }}
+         subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_05A4CDF6A9474CCD8621940441036D97 }}
+        
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'wishlist-backend'
-          slot-name: 'Production'
-          package: 'project_wishlist-0.0.1-SNAPSHOT.jar'
-
+         app-name: 'wishlist-backend'
+         slot-name: 'Production'
+         package: './java-app/project_wishlist-0.0.1-SNAPSHOT.jar'
           
+
 
 
 
