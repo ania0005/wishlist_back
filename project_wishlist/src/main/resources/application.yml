@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://mysql-wishlist.mysql.database.azure.com:3306/project_wishlist?ssl-mode=REQUIRED
+    url: jdbc:mysql://mysql-wishlist.mysql.database.azure.com:3306/project_wishlist?sslMode=REQUIRED&allowPublicKeyRetrieval=true
     username: dbadmin@mysql-wishlist
     password: MyAzure007!db
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -37,4 +37,5 @@ key:
 
 app:
   base-url: https://wishlist-backend-bqa7bcfkc7f2dggu.francecentral-01.azurewebsites.net
+
 
