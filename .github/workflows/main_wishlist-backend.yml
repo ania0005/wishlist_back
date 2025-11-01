@@ -60,8 +60,10 @@ jobs:
         with:
           app-name: 'wishlist-backend'
           slot-name: 'Production'
-          package: '${{ github.workspace }}/project_wishlist/target/project_wishlist-0.0.1-SNAPSHOT.jar'
+          package: 'project_wishlist-0.0.1-SNAPSHOT.jar'
+
           
+
 
 
 
