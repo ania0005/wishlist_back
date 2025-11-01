@@ -1,32 +1,40 @@
+server:
+  port: ${PORT:8080}  # локально — 8080, в Azure — автоматически 8181
+
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/project_wishlist
-    username: ania           # ← если у тебя другой пользователь MySQL — замени
-    password: qwert007 # ← сюда впиши СВОЙ пароль от MySQL (тот, с которым входишь в Workbench)
+    url: jdbc:mysql://mysql-wishlist.mysql.database.azure.com:3306/project_wishlist?ssl-mode=REQUIRED
+    username: dbadmin@mysql-wishlist
+    password: MyAzure007!db
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 30000
+      minimum-idle: 2
 
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
 
-mail:
-  host: smtp.gmail.com
-  port: 587
-  username: giflistify@gmail.com     # если тестируешь отправку писем, можешь временно оставить
-  password: cctjkjhnhlabbrky         # ⚠️ временный пароль-приложения (лучше потом заменить на свой)
-  properties:
-    mail:
-      smtp:
-        auth: true
-        starttls:
-          enable: true
-        ssl:
-          protocols: TLSv1.2
-          trust: smtp.gmail.com
-  debug: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: noellesecret01@gmail.com
+    password: zts7GpF05
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            protocols: TLSv1.2
+            trust: smtp.gmail.com
+    debug: true
 
 key:
   access: Dm7QXW4Yow1IjcIV/Qbs4u9R/RCCTPqeg7mkhacJ6tA=
   refresh: 3zT4pEVBP/GQ6hTpjaZTsY8kRht4L6L0qtaCgWK5djg=
 
 app:
-  base-url: http://localhost:8080     # ← поменяли DigitalOcean на локальный сервер
+  base-url: https://wishlist-backend-bqa7bcfkc7f2dggu.francecentral-01.azurewebsites.net
+
